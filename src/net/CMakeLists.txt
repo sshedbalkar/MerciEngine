@@ -1,6 +1,7 @@
 set(LIB_NAME net)
 add_library(${LIB_NAME} SHARED 
     apiClass.cpp
+    ../interface/apiClassIntf.cpp
 )
 add_library(merci::net ALIAS ${LIB_NAME})
 

@@ -35,5 +35,6 @@ target_compile_features(${SERVER_NAME} PUBLIC
 
 # link dependencies
 target_link_libraries(${SERVER_NAME}
-    merci::net
+    PUBLIC
+        merci::net
 )
