@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 3.13)
 
+# set VCPKG parameters before setting the project
+set(VCPKG_TARGET_TRIPLET x64-linux)
+set(ENV{VCPKG_ROOT} /home/mercileslie/WorkWork/Libraries/vcpkg)
+if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        CACHE STRING "")
+    message("Set VCPKG_ROOT: $ENV{VCPKG_ROOT}")
+endif()
+
 # Set the project name
 set(PROJECT_NAME merci_engine)
 project(${PROJECT_NAME})
@@ -21,7 +30,7 @@ set(CMAKE_COLOR_MAKEFILE ON)
 # See https://blog.kitware.com/create-dlls-on-windows-without-declspec-using-new-cmake-export-all-feature/
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-message("List of compile features: ${CMAKE_CXX_COMPILE_FEATURES}")
+# message("List of compile features: ${CMAKE_CXX_COMPILE_FEATURES}")
 
 # add modules
 add_subdirectory(src/net)

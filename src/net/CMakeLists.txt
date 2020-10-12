@@ -9,3 +9,6 @@ add_library(merci::net ALIAS ${LIB_NAME})
 target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/include
 )
+
+find_package(asio CONFIG REQUIRED)
+target_link_libraries(${LIB_NAME} PRIVATE asio asio::asio)
