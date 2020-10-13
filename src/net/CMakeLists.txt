@@ -10,5 +10,10 @@ target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/include
 )
 
-find_package(asio CONFIG REQUIRED)
-target_link_libraries(${LIB_NAME} PRIVATE asio asio::asio)
+find_package(asio CONFIG)
+if(asio_FOUND)
+	message("asio found")
+	target_link_libraries(${LIB_NAME} PRIVATE asio asio::asio)
+else()
+	message("asio not found, considered configs: ${asio_CONSIDERED_CONFIGS}")
+endif()
