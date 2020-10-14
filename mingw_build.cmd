@@ -6,8 +6,8 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 ::                  <config> - configuration to be used for build (default: Debug)
 
 
-if NOT "%1" == "" (set CMAKE_TARGET=%1) else (set CMAKE_TARGET=all)
-if NOT "%2" == "" (set CMAKE_BUILD_TYPE=%2) else (set CMAKE_BUILD_TYPE=Debug)
+if NOT "%1" == "" (set CMAKE_BUILD_TYPE=%1) else (set CMAKE_BUILD_TYPE=Debug)
+if NOT "%2" == "" (set CMAKE_TARGET=%2) else (set CMAKE_TARGET=all)
 
 SET CMAKE_BINARY_DIR=build\%CMAKE_BUILD_TYPE%
 Call :TO_LOWER %CMAKE_BINARY_DIR% CMAKE_BINARY_DIR

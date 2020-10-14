@@ -5,6 +5,10 @@ add_library(${LIB_NAME} SHARED
 )
 add_library(merci::net ALIAS ${LIB_NAME})
 
+target_compile_options(${LIB_NAME} PRIVATE
+    $<$<CXX_COMPILER_ID:GNU>:-DWIN_EXPORT>
+)
+
 # include files
 target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/include
