@@ -4,7 +4,7 @@
 
 void print(const char *msg) { std::cout << "Printing: " << msg << std::endl; }
 int main() {
-  registerUnityDbgCallback(print);
+  registerDebugCallback(print);
   std::cout << "main_client" << std::endl;
   apiClass api;
   int c = api.add(11, 22);

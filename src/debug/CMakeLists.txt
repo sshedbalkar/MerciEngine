@@ -22,3 +22,9 @@ target_compile_options(${LIB_NAME} PRIVATE
 target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/include
 )
+
+# copy the library to the bin directory
+add_custom_command(TARGET ${LIB_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        $<TARGET_FILE:${LIB_NAME}>
+        "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>" VERBATIM)

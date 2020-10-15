@@ -39,3 +39,9 @@ target_link_libraries(${CLIENT_NAME}
         merci::net
         merci::debug
 )
+
+# copy the exeecutable to the bin directory
+add_custom_command(TARGET ${CLIENT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        $<TARGET_FILE:${CLIENT_NAME}>
+        "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>" VERBATIM)

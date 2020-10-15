@@ -18,7 +18,7 @@ PROPERTIES
 # set compiler options
 target_compile_options(${SERVER_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX /EHsc /MTd /W2 /c>
-    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic -Werror>
+    $<$<AND:$<PLATFORM_ID:Windows>,$<NOT:$<CXX_COMPILER_ID:MSVC>>>:-Wall -Wextra -pedantic -Werror -mconsole>
 )
 
 # set compiler defines
@@ -38,3 +38,9 @@ target_link_libraries(${SERVER_NAME}
     PUBLIC
         merci::net
 )
+
+# copy the executable to the bin directory
+add_custom_command(TARGET ${SERVER_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        $<TARGET_FILE:${SERVER_NAME}>
+        "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>" VERBATIM)

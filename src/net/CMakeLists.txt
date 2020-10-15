@@ -34,3 +34,9 @@ if(asio_FOUND)
 else()
 	message("asio not found, considered configs: ${asio_CONSIDERED_CONFIGS}")
 endif()
+
+# copy the library to the bin directory
+add_custom_command(TARGET ${LIB_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        $<TARGET_FILE:${LIB_NAME}>
+        "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>" VERBATIM)
