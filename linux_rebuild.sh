@@ -9,4 +9,4 @@ fi
 cd ./build
 bash ./linclean.sh
 cd ..
-bash ./linux_build.sh
+bash ./linux_build.sh "$CMAKE_BUILD_TYPE"
