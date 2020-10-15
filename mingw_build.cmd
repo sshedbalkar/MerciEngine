@@ -1,9 +1,9 @@
 @ECHO off
 SETLOCAL ENABLEDELAYEDEXPANSION
 :: usage:
-::          mingw_build.cmd <target> <config>
-::                  <target> - target to be built (default: all)
+::          mingw_build.cmd <config> <target>
 ::                  <config> - configuration to be used for build (default: Debug)
+::                  <target> - target to be built (default: all)
 
 
 if NOT "%1" == "" (set CMAKE_BUILD_TYPE=%1) else (set CMAKE_BUILD_TYPE=Debug)

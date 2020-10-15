@@ -15,9 +15,12 @@ target_compile_definitions(${LIB_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:WIN_EXPORT>
 )
 
+message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+
 target_compile_options(${LIB_NAME} PRIVATE
-    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-mconsole>
+    $<$<AND:$<PLATFORM_ID:Windows>,$<NOT:$<CXX_COMPILER_ID:MSVC>>>:-mconsole>
 )
+# add_compile_options("${_opts}")
 
 # include files
 target_include_directories(${LIB_NAME}

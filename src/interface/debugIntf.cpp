@@ -2,13 +2,13 @@
 #include "../include/debug.h"
 
 void registerUnityDbgCallback(UnityDebugCallback callback) {
-  unityDebugCallback = callback;
   if (callback != nullptr) {
+    unityDebugCallback = callback;
   }
 }
 
 void registerDebugCallback(DebugCallback callback) {
-  debugCallback = callback;
   if (callback != nullptr) {
+    debugCallback = callback;
   }
 }

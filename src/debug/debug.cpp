@@ -6,11 +6,11 @@ UnityDebugCallback unityDebugCallback = nullptr;
 DebugCallback debugCallback = nullptr;
 
 void log(const char *msg) {
-  unityDebugCallback(msg);
   if (unityDebugCallback != nullptr) {
+    unityDebugCallback(msg);
   }
-  debugCallback(msg);
   if (debugCallback != nullptr) {
+    debugCallback(msg);
   }
 }
 void log(std::string &msg) { log(msg.c_str()); }
