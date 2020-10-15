@@ -2,8 +2,9 @@ set(LIB_NAME net)
 add_library(${LIB_NAME} SHARED 
     apiClass.cpp
     ../interface/apiClassIntf.cpp
+    ../debug/debug.cpp
 )
-add_library(merci::net ALIAS ${LIB_NAME})
+add_library(merci::${LIB_NAME} ALIAS ${LIB_NAME})
 
 #target_compile_options(${LIB_NAME} PRIVATE
 #    $<$<CXX_COMPILER_ID:GNU>:-DWIN_EXPORT>
@@ -12,6 +13,10 @@ add_library(merci::net ALIAS ${LIB_NAME})
 target_compile_definitions(${LIB_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:WIN_EXPORT>
     $<$<CXX_COMPILER_ID:GNU>:WIN_EXPORT>
+)
+
+target_compile_options(${LIB_NAME} PRIVATE
+    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-mconsole>
 )
 
 # include files

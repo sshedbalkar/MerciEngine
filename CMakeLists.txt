@@ -33,6 +33,7 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 # message("List of compile features: ${CMAKE_CXX_COMPILE_FEATURES}")
 
 # add modules
+add_subdirectory(src/debug)
 add_subdirectory(src/net)
 add_subdirectory(src/client)
 add_subdirectory(src/server)
