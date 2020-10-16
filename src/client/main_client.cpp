@@ -1,5 +1,6 @@
 #include "../include/apiClass.h"
 #include "../include/debugIntf.h"
+#include <asio>
 #include <iostream>
 
 void print1(const char *msg) { std::cout << "Printing: " << msg << std::endl; }

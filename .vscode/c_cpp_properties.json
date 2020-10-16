@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "San_win64_1",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${vcpkgRoot}/x64-windows/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "WIN_EXPORT",
+                "debug_EXPORTS"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "compilerArgs": [
+                "-g",
+                "-mconsole"
+            ],
+            "compileCommands": "${workspaceFolder}/build/debug/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
