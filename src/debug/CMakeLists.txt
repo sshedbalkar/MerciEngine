@@ -20,7 +20,7 @@ target_compile_options(${LIB_NAME} PRIVATE
 
 # include files
 target_include_directories(${LIB_NAME}
-    PUBLIC ${CMAKE_SOURCE_DIR}/include
+    PUBLIC ${CMAKE_SOURCE_DIR}/src/include
 )
 
 # copy the library to the bin directory

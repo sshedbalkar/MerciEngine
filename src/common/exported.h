@@ -6,18 +6,16 @@
 // Exporting...
 #ifdef __GNUC__
 #define EXPORTED __attribute__((dllexport))
+//#define EXPORTED __declspec(dllexport)
 #else
-#define EXPORTED                                                               \
-  __declspec(                                                                  \
-      dllexport) // Note: actually gcc seems to also supports this syntax.
+#define EXPORTED __declspec(dllexport)
 #endif
 #else
 #ifdef __GNUC__
 #define EXPORTED __attribute__((dllimport))
+//#define EXPORTED __declspec(dllimport)
 #else
-#define EXPORTED                                                               \
-  __declspec(                                                                  \
-      dllimport) // Note: actually gcc seems to also supports this syntax.
+#define EXPORTED __declspec(dllimport)
 #endif
 #endif
 #define NOT_EXPORTED

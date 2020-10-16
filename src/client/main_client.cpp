@@ -2,9 +2,9 @@
 #include "../include/debugIntf.h"
 #include <iostream>
 
-void print(const char *msg) { std::cout << "Printing: " << msg << std::endl; }
+void print1(const char *msg) { std::cout << "Printing: " << msg << std::endl; }
 int main() {
-  registerDebugCallback(print);
+  registerDebugCallback(print1);
   std::cout << "main_client" << std::endl;
   apiClass api;
   int c = api.add(11, 22);

@@ -1,4 +1,5 @@
 #pragma once
+#include "../common/exported.h"
 #include <string>
 
 // namespace debug {
@@ -17,20 +18,21 @@ using UnityDebugCallback = void (*)(const char *str);
 #endif
 // This allows us to receive callback functions from other C/C++ applications
 using DebugCallback = void (*)(const char *str);
+// typedef void (*DebugCallback)(const char *str);
 
 /**
  * @brief Standard log function
  *
  * @param msg String type
  */
-void log(const std::string &msg);
+EXPORTED void log(const std::string &msg);
 
 /**
  * @brief Standard log function
  *
  * @param msg char* type
  */
-void log(const char *msg);
+EXPORTED void log(const char *msg);
 
 extern UnityDebugCallback unityDebugCallback;
 extern DebugCallback debugCallback;

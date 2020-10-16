@@ -2,7 +2,6 @@ set(LIB_NAME net)
 add_library(${LIB_NAME} SHARED 
     apiClass.cpp
     ../interface/apiClassIntf.cpp
-    ../debug/debug.cpp
 )
 add_library(merci::${LIB_NAME} ALIAS ${LIB_NAME})
 
@@ -15,8 +14,6 @@ target_compile_definitions(${LIB_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:WIN_EXPORT>
 )
 
-message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-
 target_compile_options(${LIB_NAME} PRIVATE
     $<$<AND:$<PLATFORM_ID:Windows>,$<NOT:$<CXX_COMPILER_ID:MSVC>>>:-mconsole>
 )
@@ -24,7 +21,7 @@ target_compile_options(${LIB_NAME} PRIVATE
 
 # include files
 target_include_directories(${LIB_NAME}
-    PUBLIC ${CMAKE_SOURCE_DIR}/include
+    PUBLIC ${CMAKE_SOURCE_DIR}/src/include
 )
 
 find_package(asio CONFIG)
@@ -34,6 +31,12 @@ if(asio_FOUND)
 else()
 	message("asio not found, considered configs: ${asio_CONSIDERED_CONFIGS}")
 endif()
+
+# link dependencies
+target_link_libraries(${LIB_NAME}
+    PRIVATE
+        merci::debug
+)
 
 # copy the library to the bin directory
 add_custom_command(TARGET ${LIB_NAME} POST_BUILD
