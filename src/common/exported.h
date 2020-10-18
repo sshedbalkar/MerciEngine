@@ -2,29 +2,29 @@
 
 // Define EXPORTED for any platform
 #if defined _WIN32 || defined __CYGWIN__
-#ifdef WIN_EXPORT
-// Exporting...
-#ifdef __GNUC__
-#define EXPORTED __attribute__((dllexport))
-//#define EXPORTED __declspec(dllexport)
+    #ifdef WIN_EXPORT
+        // Exporting...
+        #ifdef __GNUC__
+            #define EXPORTED __attribute__( ( dllexport ) )
+        //#define EXPORTED __declspec(dllexport)
+        #else
+            #define EXPORTED __declspec( dllexport )
+        #endif
+    #else
+        #ifdef __GNUC__
+            #define EXPORTED __attribute__( ( dllimport ) )
+        //#define EXPORTED __declspec(dllimport)
+        #else
+            #define EXPORTED __declspec( dllimport )
+        #endif
+    #endif
+    #define NOT_EXPORTED
 #else
-#define EXPORTED __declspec(dllexport)
-#endif
-#else
-#ifdef __GNUC__
-#define EXPORTED __attribute__((dllimport))
-//#define EXPORTED __declspec(dllimport)
-#else
-#define EXPORTED __declspec(dllimport)
-#endif
-#endif
-#define NOT_EXPORTED
-#else
-#if __GNUC__ >= 4
-#define EXPORTED __attribute__((visibility("default")))
-#define NOT_EXPORTED __attribute__((visibility("hidden")))
-#else
-#define EXPORTED
-#define NOT_EXPORTED
-#endif
+    #if __GNUC__ >= 4
+        #define EXPORTED __attribute__( ( visibility( "default" ) ) )
+        #define NOT_EXPORTED __attribute__( ( visibility( "hidden" ) ) )
+    #else
+        #define EXPORTED
+        #define NOT_EXPORTED
+    #endif
 #endif

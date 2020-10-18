@@ -4,7 +4,7 @@
             "name": "San_win64_1",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${vcpkgRoot}/x64-windows/include/**"
+                "${vcpkgRoot}/x64-linux/include/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -23,6 +23,28 @@
                 "-mconsole"
             ],
             "compileCommands": "${workspaceFolder}/build/debug/compile_commands.json"
+        },
+        {
+            "name": "San_lin64_1",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${vcpkgRoot}/x64-linux/include/**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/src/**",
+                    "${vcpkgRoot}/x64-linux/include/**"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "defines": [],
+            "compilerPath": "/usr/bin/clang++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "compileCommands": "${workspaceFolder}/build/debug/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4

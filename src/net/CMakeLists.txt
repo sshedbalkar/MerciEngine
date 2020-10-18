@@ -22,6 +22,7 @@ target_compile_options(${LIB_NAME} PRIVATE
 # include files
 target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/src/include
+           $ENV{VCPKG_ROOT}/installed/x64-linux/include
 )
 
 find_package(asio CONFIG)

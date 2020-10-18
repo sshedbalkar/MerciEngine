@@ -11,12 +11,12 @@ if [ -n "$2" ]; then
 	CMAKE_TARGET=$2
 fi
 
-CMAKE_BINARY_DIR=`echo "build/$CMAKE_BUILD_TYPE" | tr '[:upper:]' '[:lower:]'`
+CMAKE_BINARY_DIR=`echo "../build/$CMAKE_BUILD_TYPE" | tr '[:upper:]' '[:lower:]'`
 
 echo "Bin dir: $CMAKE_BINARY_DIR"
 
 if [ ! -f "$CMAKE_BINARY_DIR/Makefile" ]; then
-	cmake -H"." -B"$CMAKE_BINARY_DIR" -DCMAKE_BUILD_TYPE="$CMAKE_BUILD_TYPE" -G"Unix Makefiles"
+	cmake -H".." -B"$CMAKE_BINARY_DIR" -DCMAKE_BUILD_TYPE="$CMAKE_BUILD_TYPE" -G"Unix Makefiles"
 	if [ $? -ne 0 ]; then
 		echo "Error building Makefile"
 		exit 1
