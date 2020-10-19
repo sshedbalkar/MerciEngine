@@ -17,6 +17,10 @@ target_compile_definitions(${LIB_NAME} PRIVATE
 target_compile_options(${LIB_NAME} PRIVATE
     $<$<AND:$<PLATFORM_ID:Windows>,$<NOT:$<CXX_COMPILER_ID:MSVC>>>:-mconsole>
 )
+
+target_link_options(${LIB_NAME} PRIVATE
+    $<$<CXX_COMPILER_ID:GNU>:-pthread>
+)
 # add_compile_options("${_opts}")
 
 # include files
@@ -28,15 +32,18 @@ target_include_directories(${LIB_NAME}
 find_package(asio CONFIG)
 if(asio_FOUND)
 	message("asio found")
-	target_link_libraries(${LIB_NAME} PRIVATE asio asio::asio)
+    target_link_libraries(${LIB_NAME} PRIVATE asio asio::asio)
+    target_include_directories(${LIB_NAME} PRIVATE ${asio_INCLUDE_DIR})
 else()
 	message("asio not found, considered configs: ${asio_CONSIDERED_CONFIGS}")
 endif()
+find_package(Threads REQUIRED)
 
 # link dependencies
 target_link_libraries(${LIB_NAME}
-    PRIVATE
+    PUBLIC
         merci::debug
+        Threads::Threads
 )
 
 # copy the library to the bin directory

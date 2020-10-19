@@ -10,7 +10,8 @@ extern "C" {
  * @param callback
  * @return void
  */
-EXPORTED void registerUnityDbgCallback(UnityDebugCallback callback);
+EXPORTED void registerUnityDbgCallback(
+    merci::debug::UnityDebugCallback callback );
 
 /**
  * @brief Register a callback from an external C/C++ application to receive
@@ -19,5 +20,5 @@ EXPORTED void registerUnityDbgCallback(UnityDebugCallback callback);
  * @param callback
  * @return void
  */
-EXPORTED void registerDebugCallback(DebugCallback callback);
+EXPORTED void registerDebugCallback( merci::debug::DebugCallback callback );
 }
