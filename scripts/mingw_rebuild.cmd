@@ -6,8 +6,8 @@ if "%1" == "r" (
     CMAKE_BUILD_TYPE=Release
 )
 
-cd ..\build
+rem cd into the folder with this script first
+cd /d %~dp0
 call winclean.cmd
-cd ..\scripts
 call mingw_build.cmd %CMAKE_BUILD_TYPE%
 EXIT /B %ERRORLEVEL%

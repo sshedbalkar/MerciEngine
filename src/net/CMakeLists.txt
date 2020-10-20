@@ -18,15 +18,13 @@ target_compile_options(${LIB_NAME} PRIVATE
     $<$<AND:$<PLATFORM_ID:Windows>,$<NOT:$<CXX_COMPILER_ID:MSVC>>>:-mconsole>
 )
 
-target_link_options(${LIB_NAME} PRIVATE
-    $<$<CXX_COMPILER_ID:GNU>:-pthread>
-)
 # add_compile_options("${_opts}")
 
 # include files
 target_include_directories(${LIB_NAME}
     PUBLIC ${CMAKE_SOURCE_DIR}/src/include
-           $ENV{VCPKG_ROOT}/installed/x64-linux/include
+           $<$<PLATFORM_ID:Linux>:$ENV{VCPKG_ROOT}/installed/x64-linux/include>
+           $<$<PLATFORM_ID:Windows>:$ENV{VCPKG_ROOT}/installed/x64-windows/include>
 )
 
 find_package(asio CONFIG)
@@ -39,11 +37,16 @@ else()
 endif()
 find_package(Threads REQUIRED)
 
+target_link_options(${LIB_NAME} PRIVATE
+    $<$<CXX_COMPILER_ID:GNU>:-pthread>
+)
+
 # link dependencies
 target_link_libraries(${LIB_NAME}
     PUBLIC
         merci::debug
         Threads::Threads
+        ws2_32
 )
 
 # copy the library to the bin directory

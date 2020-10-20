@@ -20,7 +20,25 @@
             "command": "${workspaceRoot}/scripts/linux_rebuild.sh",
             "args": [],
             "group": {
-                "kind": "build",
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "_windows_build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "command": "${workspaceRoot}\\scripts\\mingw_rebuild.cmd",
+            "args": [],
+            "group": {
+                "kind": "test",
                 "isDefault": true
             },
             "presentation": {
@@ -35,10 +53,26 @@
                 "cd_workspace",
                 "_linux_build"
             ],
-            "dependsOrder": "sequence"
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
-            "label": "format_file",
+            "label": "windows_build",
+            "dependsOn": [
+                "cd_workspace",
+                "_windows_build"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "lin_format_file",
             "type": "shell",
             "command": "${workspaceRoot}/scripts/format_file.sh",
             "options": {
@@ -50,7 +84,28 @@
             "group": "none",
             "presentation": {
                 "echo": false,
-                "reveal":"never",
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "win_format_file",
+            "type": "shell",
+            "command": "${workspaceRoot}\\scripts\\format_file.cmd",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "args": [
+                "${file}"
+            ],
+            "group": "none",
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
                 "focus": false,
                 "panel": "shared",
                 "showReuseMessage": false,
