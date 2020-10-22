@@ -13,6 +13,8 @@ void my_func_2() {
     std::cout.flush();
 }
 
+void my_func_3() { }
+
 void my_func_1( double f ) {
     (void)f;
     my_func_2();
@@ -22,10 +24,12 @@ void my_func_1( int i ) {
     (void)i;
     my_func_2();
 }
+
 int main() {
     registerDebugCallback( print1 );
     std::cout << "main_client" << std::endl;
     apiClass api;
+    std::cout << "Hello" << std::endl;
     int c = api.add( 11, 22 );
     std::cout << "The sum is: " << c << std::endl;
     std::cout.flush();

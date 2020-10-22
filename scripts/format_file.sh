@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # echo "Args: $# : $@"
-# # store arguments in a special array 
-# args=("$@") 
-# # get number of elements 
-# ELEMENTS=${#args[@]} 
- 
-# # echo each element in array  
-# # for loop 
-# for (( i=0;i<$ELEMENTS;i++)); do 
-#     echo ${args[${i}]} 
+# # store arguments in a special array
+# args=("$@")
+# # get number of elements
+# ELEMENTS=${#args[@]}
+
+# # echo each element in array
+# # for loop
+# for (( i=0;i<$ELEMENTS;i++)); do
+#     echo ${args[${i}]}
 # done
 
 # if [ -z "$1" ]; then
@@ -17,6 +17,7 @@
 #     exit 1
 # fi
 
+# echo "File: $1"
 filename=$(basename -- "$1")
 extension="${filename##*.}"
 filename="${filename%.*}"
@@ -26,7 +27,7 @@ filename="${filename%.*}"
 cpp_files=( c cpp h hpp cc )
 
 for item in "${cpp_files[@]}"; do
-    if [[ $extension == "$item" ]]; then 
+    if [[ $extension == "$item" ]]; then
         clang-format -i "$1"
         exit 0
     fi

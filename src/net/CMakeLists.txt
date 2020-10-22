@@ -46,7 +46,7 @@ target_link_libraries(${LIB_NAME}
     PUBLIC
         merci::debug
         Threads::Threads
-        ws2_32
+        $<$<PLATFORM_ID:Windows>:$ws2_32>
 )
 
 # copy the library to the bin directory
